@@ -1,0 +1,58 @@
+ <section>
+    <div class="container "  *ngIf="Movie!=undefined">
+        <div >
+            <h2 class="mt-4 fs-3 " > <span *ngIf="SectionName=='popular'">{{"Popular Movies"|translate}}</span>  <span *ngIf="SectionName=='now_playing'">{{"Now Playing Movies"|translate}}</span> <span *ngIf="SectionName=='upcoming'">{{"Upcoming Movies"|translate}}</span>
+                <span *ngIf="SectionName=='top_rated'">{{"Top Rated Movies"|translate}}</span>
+            </h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xxl-auto col-md-auto col-sm-auto   text-center" *ngFor="let x of Movie.results|paginate:{ itemsPerPage: Movie?.results?.length, currentPage:  p ,totalItems: Movie?.total_results }">
+                <div class=" poster ">
+                    <div class=" rounded-3 position-relative d-inline-block shadow-lg">
+                        <img loading="lazy" [routerLink]="['/show','moviedetails',x.id]" [src]="imgPath+ x.poster_path" class=" rounded-3 cursor" alt="">
+                        <circle-progress [percent]="x.vote_average*10" [imageWidth]="10" [showSubtitle]="false"
+                            [radius]="14" [innerStrokeWidth]="2" [titleFontSize]="'12'" [titleColor]="'#fff'"
+                            [backgroundColor]="'#081c22'" [outerStrokeWidth]="2" [innerStrokeWidth]="0"
+                            [outerStrokeColor]="x.vote_average*10 >=70 ? '#1da664' : '#d2d531'"
+                            [innerStrokeColor]="'#C7E596'" [unitsColor]="'#fff'" [animation]="true"
+                            [animationDuration]="200" class="innerCircle cursor"></circle-progress>
+
+
+                        <i (click)="List($event)" class="fa-solid fa-ellipsis cursor" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+
+
+                        <div
+                            class="position-absolute list list-unstyled bg-white p-1 text-start rounded-3 d-none">
+
+                            <li class="py-1  px-2"><a class="cursor text-decoration-none "><i
+                                        class="fa-solid fa-list me-1  "></i> Add to List</a></li>
+
+                            <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                        class="fa-solid fa-heart me-1  "></i> Favorite</a></li>
+
+                            <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                        class="fa-solid fa-bookmark me-1  "></i>Watchlist</a></li>
+
+                            <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                        class="fa-sharp fa-solid fa-star me-1  "></i>Your Rating</a></li>
+                        </div>
+
+
+                    </div>
+                    <div class="mt-4">
+                        <h2 [routerLink]="['/show','moviedetails',x?.id]" class="PosterName cursor mb-2 fw-semibold">{{x?.original_title || x?.name}}</h2>
+                        <p class="text-muted lh-sm">{{x?.release_date||x?.first_air_date}}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="text-center">
+                <pagination-controls  (click)="paginateon()"   (pageChange)="p = $event "  ></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section> 
+

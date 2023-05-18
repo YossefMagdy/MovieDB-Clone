@@ -1,0 +1,307 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container ">
+    <a (click)="searchopen=true" class="navbar-brand"  routerLink="/home"><img
+        src="./assets/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+        alt="The Movie Database (TMDB)" width="154" height="20"></a>
+    <button class="navbar-toggler" 
+    (click)="width()">
+      <span><i class="fa-solid fa-bars text-white"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown " *ngIf="islogin">
+          <a class="nav-link text-white "  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{'Movies'|translate}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item " [routerLink]="['/show','movie','popular']" >{{'Popular'|translate}}</a></li>
+            <li><a class="dropdown-item"  [routerLink]="['/show','movie','now_playing']">{{"Now Playing"|translate}}</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/show','movie','upcoming']">{{"Upcoming"|translate}}</a></li>
+            <li><a class="dropdown-item"[routerLink]="['/show','movie','top_rated']" >{{"Top Rated"|translate}}</a></li>
+          </ul>
+        </li>
+
+        <li  *ngIf="islogin" class="nav-item dropdown">
+          <a class="nav-link  text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{'TV shows'|translate}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item"  [routerLink]="['/show','tv','popular']">{{'Popular'|translate}}</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/show','tv','airing_today']">{{'Airing Today'|translate}}</a></li>
+            <li><a class="dropdown-item"[routerLink]="['/show','tv','on_the_air']" >{{'On Tv'|translate}}</a></li>
+            <li><a class="dropdown-item"[routerLink]="['/show','tv','top_rated']" >{{'Top Rated'|translate}}</a></li>
+          </ul>
+        </li>
+
+        <li  *ngIf="islogin" class="nav-item dropdown">
+          <a class="nav-link  text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{'People'|translate}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/people','popular_people']" class="dropdown-item" >{{'Popular People'|translate}}</a></li>
+          </ul>
+        </li>
+
+  
+
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+
+        <li  *ngIf="islogin" class="nav-item dropdown">
+          <a class="nav-link fw-bold"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fw-bolder fa-plus text-white fs-5"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" >{{'Add New Movie'|translate}}</a></li>
+            <li><a class="dropdown-item" >{{'Add New TV Show'|translate}}</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown mx-2">
+          <a class="nav-link text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="language" *ngIf="English">EN</span>
+            <span class="language" *ngIf="English==false">AR</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a (click)="translate.use('en');English=true" class="dropdown-item cursor" ><SPAN>EN</SPAN><span class="mx-1">-</span> English(en-US)</a></li>
+            <li><a (click)="translate.use('Ar');English=false" class="dropdown-item cursor" ><SPAN>AR</SPAN><span class="mx-1">-</span>Arabic</a></li>
+          </ul>
+        </li>
+
+        <li  *ngIf="islogin" class="nav-item dropdown mx-2">
+          <a class="nav-link text-white "  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bell"></i>
+          </a>
+          <ul class="dropdown-menu p-4 Notifications">
+            <p>{{'Unread Notifications'|translate}}<span>0</span></p>
+            <p>{{"Good job! Looks like you're all caught up"|translate}} <a class="text-decoration-underline"> {{"View All"|translate}}</a></p>
+          </ul>
+        </li>
+
+        <li *ngIf="!islogin" class="nav-item dropdown mx-2">
+          <a class="nav-link text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- <span>{{Toggle}}</span> -->
+            <span *ngIf="Toggle=='LOGIN'">{{"Login"|translate}}</span>
+            <span *ngIf="Toggle=='REGISTER'">{{"REGISTER"|translate}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li ><a [routerLink]="['/Authentication','login']" class="dropdown-item" >{{"Login"|translate}}</a></li>
+            <li ><a [routerLink]="['/Authentication','register']" class="dropdown-item" >{{"REGISTER"|translate}}</a></li>
+          </ul>
+        </li>
+
+        <li *ngIf="islogin" class="nav-item dropdown-center mx-2 profile">
+          <a class="nav-link text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <Span class="profile-name">{{name.slice(0,1)|uppercase}}</Span>
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" >{{name|uppercase}}</a></li>
+            <li><a class="dropdown-item text-muted">{{'View Profile'|translate}}</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" >{{'Lists'|translate}}</a></li>
+            <li><a class="dropdown-item" >{{'Rating'|translate}}</a></li>
+            <li><a class="dropdown-item" >{{'Watchlist'|translate}}</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a (click)="logout()" class="dropdown-item" >{{'Logout'|translate}}</a></li>
+          </ul>
+        </li>
+
+
+        <li *ngIf="islogin" (click)="searchopen=!searchopen"    class="nav-item ">
+          <a  class="nav-link active" aria-current="page" ><i  *ngIf="searchopen"
+              class="fa-solid fa-magnifying-glass Glass-Icon cursor"></i>
+              <i *ngIf="!searchopen" class="fa-solid fa-xmark Glass-Icon  cursor"></i> 
+            </a>
+           
+        </li>
+<!-- //============================================== -->
+
+
+
+      </ul>
+
+      
+    </div>
+
+    
+      <div  >
+       <ul *ngIf="islogin" class="  d-flex align-items-center sm-screen">
+        <li class="nav-item dropdown mx-2 list-unstyled">
+          <a class="nav-link text-white "  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bell"></i>
+          </a>
+          <ul class="dropdown-menu p-4 Notifications">
+            <p>{{'Unread Notifications'|translate}} <span>0</span></p>
+            <p>{{"Good job! Looks like you're all caught up"|translate}}  <a class="text-decoration-underline">{{"View All"|translate}}</a></p>
+          </ul>
+        </li> 
+    
+        <li class="nav-item dropdown-center mx-lg-2 mx-sm-4 mx-2 profile list-unstyled">
+          <a class="nav-link text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <Span class="profile-name">{{name.slice(0,1)|uppercase}}</Span>
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" >{{name|uppercase}}</a></li>
+            <li><a class="dropdown-item text-muted">{{'View Profile'|translate}}</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" >{{'Lists'|translate}}</a></li>
+            <li><a class="dropdown-item" >{{'Rating'|translate}}</a></li>
+            <li><a class="dropdown-item" >{{'Watchlist'|translate}}</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a (click)="logout()" class="dropdown-item" >{{'Logout'|translate}}</a></li>
+          </ul>
+        </li>
+    
+        <li (click)="searchopen=!searchopen"  class="nav-item list-unstyled">
+          <a class="nav-link active" aria-current="page" ><i  *ngIf="searchopen"
+            class="fa-solid fa-magnifying-glass Glass-Icon cursor"></i>
+            <i *ngIf="!searchopen" class="fa-solid fa-xmark Glass-Icon  cursor"></i> </a>
+        </li>
+       </ul>
+
+       <ul *ngIf="!islogin" class="  d-flex align-items-center sm-screen Auth" >
+        <li *ngIf="!islogin" class="nav-item dropdown mx-2">
+          <a class="nav-link text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- <span>{{Toggle}}</span> -->
+            <span *ngIf="Toggle=='LOGIN'">{{"Login"|translate}}</span>
+            <span *ngIf="Toggle=='REGISTER'">{{"REGISTER"|translate}}</span>
+          </a>
+          <ul class="dropdown-menu ">
+            <li ><a [routerLink]="['/Authentication','login']" class="dropdown-item" >{{"Login"|translate}}</a></li>
+            <li ><a [routerLink]="['/Authentication','register']" class="dropdown-item" >{{"REGISTER"|translate}}</a></li>
+          </ul>
+        </li>
+  
+       </ul>
+      </div>  
+
+
+    </div>
+
+  
+</nav>
+
+<div class="slideNavbar " id="slideNavbarx">
+
+  <div class="accordion bg-transparent " id="accordionPanelsStayOpenExample">
+    
+    <div class="accordion-item  bg-transparent border-0">
+      <h2 class="accordion-header  ">
+        <button class="accordion-button  bg-transparent py-2 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne1" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          {{'Movies'|translate}}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne1" class="accordion-collapse collapse ">
+        <div class="accordion-body py-0 ">
+          <ul class="list-unstyled text-white">
+            <li><a class="dropdown-item " [routerLink]="['/show','movie','popular']">{{'Popular'|translate}}</a></li>
+            <li><a class="dropdown-item"  [routerLink]="['/show','movie','now_playing']">{{"Now Playing"|translate}}</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/show','movie','upcoming']">{{"Upcoming"|translate}}</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/show','movie','top_rated']" >{{"Top Rated"|translate}}</a></li>
+          </ul> 
+        </div>
+      </div>
+    </div>
+
+
+    <div class="accordion-item   bg-transparent border-0">
+      <h2 class="accordion-header ">
+        <button class="accordion-button text-white bg-transparent py-2 " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne2" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+         <p class="WrappingWord">{{'TV shows'|translate}}</p>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne2" class="accordion-collapse collapse ">
+        <div class="accordion-body py-0">
+          <ul class="list-unstyled text-white">
+            <li><a class="dropdown-item"  [routerLink]="['/show','tv','popular']">{{'Popular'|translate}}</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/show','tv','airing_today']">{{'Airing Today'|translate}}</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/show','tv','on_the_air']">{{'On Tv'|translate}}</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/show','tv','top_rated']">{{'Top Rated'|translate}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="accordion-item  bg-transparent border-0">
+      <h2 class="accordion-header">
+        <button  class="accordion-button  bg-transparent py-2 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne3" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          {{'People'|translate}}
+        </button>
+      </h2>
+      <div    id="panelsStayOpen-collapseOne3" class="accordion-collapse collapse ">
+        <div [routerLink]="['/people','popular_people']" class="accordion-body py-0">
+          <ul class="list-unstyled text-white">
+            <li><a class="dropdown-item cursor" >{{'Popular People'|translate}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <div class="accordion-item  bg-transparent border-0">
+      <h2 class="accordion-header">
+        <button    class="accordion-button  bg-transparent py-2 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne6" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          <a class="nav-link text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="language" *ngIf="English">EN</span>
+            <span class="language" *ngIf="English==false">AR</span>
+          </a>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne6" class="accordion-collapse collapse ">
+        <div class="accordion-body py-0">
+          <ul class="list-unstyled text-white">
+            <li class="py-2"><a (click)="translate.use('en');English=true" class="dropdown-item cursor" ><SPAN>EN</SPAN><span class="mx-1">-</span> English(en-US)</a></li>
+            <li class="py-2"><a (click)="translate.use('Ar');English=false" class="dropdown-item cursor" ><SPAN>AR</SPAN><span class="mx-1">-</span>Arabic</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  
+
+    
+    <div class="accordion-item  bg-transparent border-0">
+      <h2 class="accordion-header">
+        <button (click)="logout()" class="accordion-button  bg-transparent py-2 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne4" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          {{'Logout'|translate}}
+        </button>
+      </h2>
+    </div>
+  </div>
+
+</div>
+
+
+
+  <div class="position-absolute SearchBox " [ngStyle]="{'display':searchopen ==true ? 'none': 'block'}">
+    <div class="search position-relative">
+      <input  [(ngModel)]="searchTerm" (keyup)="searchFor($event)" type="text" class="form-control rounded-0 ">
+      <i class="fa-solid fa-magnifying-glass"></i>
+  </div>
+  
+  <div *ngIf="searchTerm==''" class="SearchTrending">
+    <h3 *ngIf="searchTerm==''" class="py-2"><i class="fa-solid fa-arrow-trend-up me-2"></i>{{"Trending"|translate}}</h3>
+    
+      <p   (click)="gotoDetails(x.id)"    *ngFor="let x of Tranding.slice(0,10)" class="py-1"><i class="fa-solid fa-magnifying-glass me-2 " ></i>{{x.original_title||x.original_name}}</p>
+    
+    
+  </div>
+
+  <div *ngIf="searchTerm.length>0" class="SearchTrending">
+   
+    <p    [routerLink]="['/show','moviedetails',x.id]"   *ngFor="let x of searchData.slice(0,10)" class="py-1"><i class="fa-solid fa-magnifying-glass me-2 " ></i>{{x?.original_title||x?.original_name}}</p>
+    
+  </div>
+</div>

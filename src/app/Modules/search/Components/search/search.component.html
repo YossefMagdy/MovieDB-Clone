@@ -1,0 +1,105 @@
+<div class="search position-relative">
+    <input (keyup)="SearchFor()"  [(ngModel)]="searchTerm"   type="text" class="form-control rounded-0 ">
+    <i class="fa-solid fa-magnifying-glass"></i>
+</div>
+
+<div class=" border d-xxl-none">
+    <h2 class="bg-info text-white py-2 px-3">Search Results</h2>
+    <div class="px-5 body2" >
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide> <li   (click)="GetMovies();p=1" class="d-flex  align-items-center p-2 cursor">
+                <h3 [ngStyle]="{'color': SearchTarget =='movie'? '#0dcaf0' : ''}"   class="mb-0">Movies</h3>
+                <p [ngStyle]="{'border-color': SearchTarget =='movie'? '#0dcaf0' : ''}"  class=" ms-2 px-2 rounded-2 mb-0 ">{{totalMovieItem}}</p>
+            </li></ng-template>  
+            <ng-template carouselSlide> <li  (click)="GetTvShows();p=1;SearchTarget='tv'"  class="d-flex  align-items-center p-2 cursor">
+                <h3  [ngStyle]="{'color': SearchTarget =='tv'? '#0dcaf0' : ''}"  class="mb-0">Tv Shows</h3>
+                <p [ngStyle]="{'border-color': SearchTarget =='tv'? '#0dcaf0' : ''}"   class="ms-2  px-2 rounded-2 mb-0">{{totalTvItem}}</p>
+            </li></ng-template>  
+            <ng-template carouselSlide> <li (click)="Getpeople();p=1;SearchTarget='people'"  class="d-flex  align-items-center p-2 cursor">
+                <h3  [ngStyle]="{'color': SearchTarget =='people'? '#0dcaf0' : ''}"  class="mb-0">People</h3>
+                <p  [ngStyle]="{'border-color': SearchTarget =='people'? '#0dcaf0' : ''}"  class="ms-2  px-2 rounded-2 mb-0">{{totalPeopleItem}}</p>
+            </li></ng-template>  
+          </owl-carousel-o>
+    </div>
+</div>
+<section class="search py-5">
+        <div class="container">
+
+        
+            <div class="row">
+                
+
+                <div class="col-xxl-3 d-xxl-block d-none ">
+                   <div class="rounded-4 border overflow-hidden">
+                    <div class="heading bg-info p-3">
+                        <h2 class="text-white mb-0">Search Results</h2>
+                </div>
+                <div class="body  mt-3">
+                    <ul class="list-unstyled">
+                        <li [ngStyle]="{'background-color': SearchTarget =='movie'? '#ebebeb' : ''}" (click)="GetMovies();p=1" class="d-flex justify-content-between align-items-center p-3 cursor">
+                            <h3 class="mb-0">Movies</h3>
+                            <p [ngStyle]="{'background-color': SearchTarget =='movie'? 'white' : ''}" class=" py-1 px-2 rounded-2 mb-0">{{totalMovieItem}}</p>
+                        </li>
+                        <li [ngStyle]="{'background-color': SearchTarget =='tv'? '#ebebeb' : ''}" (click)="GetTvShows();p=1;SearchTarget='tv'"  class="d-flex justify-content-between align-items-center p-3 cursor">
+                            <h3 class="mb-0">Tv Shows</h3>
+                            <p [ngStyle]="{'background-color': SearchTarget =='tv'? 'white' : ''}" class=" py-1 px-2 rounded-2 mb-0">{{totalTvItem}}</p>
+                        </li>
+                        <li [ngStyle]="{'background-color': SearchTarget =='people'? '#ebebeb' : ''}" (click)="Getpeople();p=1;SearchTarget='people'"  class="d-flex justify-content-between align-items-center p-3 cursor">
+                            <h3 class="mb-0">People</h3>
+                            <p [ngStyle]="{'background-color': SearchTarget =='people'? 'white' : ''}" class=" py-1 px-2 rounded-2 mb-0">{{totalPeopleItem}}</p>
+                        </li>
+                        
+                    </ul>
+
+                </div>
+                   </div>
+                </div>
+                <div class="col-xxl-9 px-4">
+                    <div  class="row RowH mb-4 rounded-3 overflow-hidden border cursor" *ngFor="let x of searchData.results|paginate:{ itemsPerPage: searchData.results.length, currentPage:  p ,totalItems: totalpages }
+                    ">
+                       
+                       
+                         <div class="d-flex px-0 ">
+                            
+                            <div class="image " (click)="GetDetails(x.id)">
+                                <img loading="lazy" *ngIf="SearchTarget=='movie' || SearchTarget=='tv'" [src]="(imgpath+x.poster_path) " alt="">
+                                <img loading="lazy" *ngIf="SearchTarget=='people'" [src]="(imgpath+x.profile_path) " alt="">
+                            </div>
+                       
+                          <div class="px-3 col-h    ">
+                            <h2 class="mb-0 mt-2">{{x.title||x.original_title|| x.original_name}}</h2>
+                            <span *ngIf="SearchTarget=='movie' || SearchTarget=='tv'"
+                            class="  ">
+
+                            {{( mL[+(x.release_date?.split('-').slice(1,2).join(''))])|| ( mL[+(x.first_air_date?.split('-').slice(1,2).join(''))])}} 
+                            
+                            <span class="ms-1">{{(x.release_date?.split('-').slice(2,3).join(''))||(x.first_air_date?.split('-').slice(2,3).join(''))}}</span>
+                            
+                            <span class="mx-1">,</span>{{(x.release_date?.split('-').slice(0,1).join(''))||(x.first_air_date?.split('-').slice(0,1).join(''))   }}
+
+                        </span>
+
+
+                        <p  *ngIf="SearchTarget=='people'"><span> {{x.known_for_department}}</span> <span class="mx-1 fs-3 fw-bold">.</span>
+                        
+                            <span *ngFor="let z of x.known_for;let i=index">
+                                {{z.original_title }}  <Span *ngIf="i+1!=x.known_for.length">,</Span>
+                            </span>
+                            
+                            </p>
+
+                        <p class="mt-3 ">{{x.overview}}</p>
+                          </div>
+
+                        </div>
+                        
+                       </div>
+                       <pagination-controls  (click)="paginateon()"   (pageChange)="p = $event "  ></pagination-controls>
+                         </div>
+                    
+
+                   
+                </div>
+            </div>
+      
+</section>

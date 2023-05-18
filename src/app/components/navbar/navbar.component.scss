@@ -1,0 +1,152 @@
+.navbar {
+    background: {
+        color: var(--maincolor);
+    };
+    height: 50px;
+}
+
+.language {
+    padding: 3px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.profile {
+    .dropdown-menu {
+        right: 50%;
+        transform: translateX(-60%);
+    }
+
+    .profile-name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: teal;
+
+    }
+
+}
+
+
+.dropdown-menu.Notifications {
+    right: 50%;
+    transform: translateX(-60%);
+    width: 250px !important;
+
+}
+.Glass-Icon{
+    color: #01b4e4;
+    font-size: 1.2rem;
+}
+.sm-screen{
+    display: none !important;
+}
+
+@media (max-width:992px) {
+    .navbar-brand{
+        position: absolute !important;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .sm-screen{
+        display: flex !important;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translatey(-50%);
+    }
+}
+.slideNavbar{
+    display: none;
+    height: calc(100vh  - 50px);
+    position: absolute;
+    width: 0;
+    overflow:hidden ;
+    transition: all 1s;
+    background-color: #043258;
+    z-index: 3456789;
+}
+
+@media (max-width:992px){
+    .slideNavbar{
+        display: block;
+    }
+}
+
+.accordion-button:focus{
+    box-shadow: none ;
+    border-color: rgba(0,0,0,.125);
+}
+.accordion-button::after{
+    content: '' !important;
+    display: none !important    ;
+}
+
+.accordion{
+    --bs-accordion-border-color: transparent;
+    
+}
+.WrappingWord{
+    white-space: nowrap;
+}
+.navbar-toggler:focus{
+    box-shadow: white !important;
+}
+
+.search{
+    input{
+        
+        padding: 8px 5em;
+        z-index: -1 !important;
+    }
+    input:focus{
+        border-color: #ccc;
+        box-shadow: none;
+        outline: none;
+    }
+    i{
+        position: absolute;
+           top:50%;
+           transform: translateY(-50% );
+           left: 60px;
+           
+    }
+}
+.SearchTrending{
+    h3{
+        padding: 0 60px;
+        background-color: #f7f7f7;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 0 !important;
+    }
+    p{
+        padding: 0 60px;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+        margin: 0 !important;
+    }
+    p:hover{
+        background-color: #f7f7f7;
+    }
+}
+.SearchBox{
+    left: 0;
+    right: 0;
+    z-index:99999;
+    background-color: white;
+}
+
+.Auth{
+    .dropdown-menu {
+        min-width: 7em !important;
+        right: 50%;
+        transform: translateX(-50%);
+       
+    }
+   
+}

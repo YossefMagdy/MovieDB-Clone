@@ -1,0 +1,12 @@
+.poster{
+    width: 235px;
+}
+.meta{
+    max-width: 100% ;
+    white-space: nowrap;
+    overflow: hidden ;
+    text-overflow: ellipsis ;
+}
+.meta p{
+    font-size: 0.91em;
+}

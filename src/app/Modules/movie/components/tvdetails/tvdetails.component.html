@@ -1,0 +1,249 @@
+<div class="section py-4" id="GameDetails">
+    <div class="container">
+        <div class="gameDetails">
+            <div  class="row ">
+                <div class="col-xxl-3 text-center">
+                    <div *ngIf="movieDetails!=undefined" class="image ">
+                        <img loading="lazy" [src]="ImagePath+movieDetails?.poster_path" class="rounded-3 shadow-lg" alt="">
+                        <div  *ngIf="GetProviders!=undefined" class="WatchON d-flex justify-content-center py-2 rounded-bottom-3" (click)="GotoLink()"  >
+                            <div class="">
+                             <img *ngIf="GetProviders.flatrate!=undefined;else open" [src]="'https://www.themoviedb.org/t/p/original/'+GetProviders?.flatrate[0]?.logo_path" class="w-50 rounded-2" alt="">
+ 
+                             <ng-template #open>
+                                 <img  *ngIf="GetProviders.buy!=undefined"  [src]="'https://www.themoviedb.org/t/p/original/'+GetProviders?.buy[0]?.logo_path" class="w-50 rounded-2" alt="">
+                             </ng-template>
+                             
+                            </div>
+                             <div class="text-white  cursor">
+                                 <p class="mb-0">Now Streaming</p>
+                                 <h3 class="mb-0">Watch Now</h3>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-xxl-9 py-5">
+                    <div class="text-white">
+                        <h2 class="fs-3 fw-semibold mb-0">{{movieDetails?.original_title||movieDetails?.original_name }}
+
+                            <span
+                                class="text-secondary">({{(movieDetails?.release_date?.split('-')?.reverse()?.slice(2))||(movieDetails?.first_air_date?.split('-')?.reverse()?.slice(2))}})</span>
+                        </h2>
+
+                        <span
+                            class="  ">{{(movieDetails?.release_date?.split('-')?.reverse()?.join('/'))||(movieDetails?.first_air_date?.split('-')?.reverse()?.join('/'))}}({{movieDetails?.original_language|uppercase}})
+                            <span class="fs-3 fw-bold mx-2">.</span> <span
+                                *ngFor="let x of movieDetails?.genres;let i=index">{{x.name}} <span
+                                    *ngIf="i+1!=movieDetails?.genres?.length" class="mx-1">,</span> </span> <span
+                                class="fs-3 fw-bold mx-2" *ngIf="this?.movieDetails?.runtime">.</span> <span
+                                *ngIf="this.movieDetails?.runtime">{{(runtime[0]+'h'+' '+runtime[1]+'m ')}}</span>
+                        </span>
+
+                        <div class="d-flex mt-4 align-items-center cursor">
+                            <circle-progress *ngIf="movieDetails!=undefined" [percent]="movieDetails.vote_average*10" [imageWidth]="10"
+                                [showSubtitle]="false" [radius]="25" [innerStrokeWidth]="10" [titleFontSize]="'18'"
+                                [titleColor]="'#fff'" [backgroundColor]="'#081c22'" [outerStrokeWidth]="3"
+                                [innerStrokeWidth]="0"
+                                [outerStrokeColor]="movieDetails.vote_average*10 >=70 ? '#21d07a' : '#d2d531'"
+                                [innerStrokeColor]="'#204529'" [unitsColor]="'#fff'" [animation]="true"
+                                [animationDuration]="200" class="innerCircle"></circle-progress>
+
+                            <div class="text ms-3 me-4 fw-semibold">
+                                User <br> Score
+                            </div>
+
+                            <div class=" list d-none list-unstyled d-lg-flex d-xxl-flex  align-items-center">
+
+                                <i [popper]="popper1Content" class="fa-solid  fa-list mx-5 cursor "
+                                    [popperShowOnStart]="false"
+                                    [popperStyles]="{'backgroundColor':'#032541','color':'white','border':'none','padding-bottom':'0 '}"
+                                    [popperTrigger]="'hover'" [popperHideOnClickOutside]="true"
+                                    [popperHideOnScroll]="true" [popperPlacement]="'bottom'"></i>
+
+                                <i class="fa-solid  fa-heart mx-5 cursor " [popper]="popper2Content"
+                                    [popperShowOnStart]="false" [popperStyles]="{'backgroundColor':'#032541','color':'white','border':'none',
+                                    'padding-bottom':'0 '}" [popperTrigger]="'hover'" [popperHideOnClickOutside]="true"
+                                    [popperHideOnScroll]="true" [popperPlacement]="'bottom'"></i>
+
+                                <i class="fa-solid  fa-bookmark mx-5 cursor " [popper]="popper3Content"
+                                    [popperShowOnStart]="false"
+                                    [popperStyles]="{'backgroundColor':'#032541','color':'white','border':'none','padding-bottom':'0 '}"
+                                    [popperTrigger]="'hover'" [popperHideOnClickOutside]="true"
+                                    [popperHideOnScroll]="true" [popperPlacement]="'bottom'"></i>
+
+                                <i class="fa-sharp  fa-solid fa-star mx-5 cursor " [popper]="popper4Content"
+                                    [popperShowOnStart]="false"
+                                    [popperStyles]="{'backgroundColor':'#032541','color':'white','border':'none','padding-bottom':'0 '}"
+                                    [popperTrigger]="'hover'" [popperHideOnClickOutside]="true"
+                                    [popperHideOnScroll]="true" [popperPlacement]="'bottom'"></i>
+
+
+                            </div>
+
+                            <div *ngIf="TrailerKey?.length>0" (click)="OpenVideo()" class="d-flex align-items-center">
+                                <i class="fa-solid fa-play me-3"></i>
+                                <p class="mt-2 fw-semibold">Play Trailer</p>
+                            </div>
+
+                        </div>
+                        <div class="mt-4" *ngIf="movieDetails?.overview">
+                            <p class="fw-semibold OvervText text-secondary">{{movieDetails?.tagline}}</p>
+                            <h3 class="fw-semibold fs-5">Overview</h3>
+                            <p class="OvervText">{{movieDetails?.overview}}</p>
+                        </div>
+
+
+                        <div class="row mt-4">
+                            <div class="col-md-4" *ngFor="let x of movieDetails?.credits?.crew?.slice(0,4)">
+                                <h2 class="mb-0 ">{{x?.original_name}}</h2>
+                                <span>{{x?.known_for_department}}</span>
+                            </div>
+
+
+                            <popper-content #popper1Content>
+                                <p class="bold">Add to List</p>
+                            </popper-content>
+
+                            <popper-content #popper2Content>
+                                <p class="bold">Mark as favorite</p>
+                            </popper-content>
+
+                            <popper-content #popper3Content>
+                                <p class="bold">Add to your watchlist</p>
+                            </popper-content>
+
+                            <popper-content #popper4Content>
+                                <p class="bold">Rate It!</p>
+                            </popper-content>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="mt-4 ">
+    <div class="container border-2 border-bottom">
+        <div>
+            <h2>Top Billed Cast</h2>
+
+            <div *ngIf="movieDetails!=undefined">
+                <owl-carousel-o [options]="customOptions">
+
+
+                    <ng-container *ngFor="let x of movieDetails.credits.cast|popularPeople">
+                        <ng-template carouselSlide *ngIf="x.profile_path != null">
+                            <div class="mx-3 shadow rounded-3   overflow-hidden poster-cast">
+                                <div>
+                                    <img [routerLink]="['/people','personDetail',x?.id]" [src]="CastPath+x?.profile_path">
+                                </div>
+                                <div class="p-2 postercontect-cast ">
+                                    <h3 [routerLink]="['/people','personDetail',x.id]" class="fw-bold  mb-0 ">{{x?.original_name}}</h3>
+                                    <p class="text-muted"> {{x?.character?.split(' ')?.slice(0,2)?.join(' ')}}</p>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+
+                </owl-carousel-o>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+ <section >
+    <div class="container mt-4  border-2 border-bottom">
+        <div class="d-flex align-items-center"> 
+            <h2 class="me-5 fs-4">Social</h2>
+            <p (click)="AnotherRev()" class="fs-6 border-black border-bottom border-5 pb-1 cursor">Reviews <span class="text-muted fw-semibold">{{Allreviews?.results?.length}}</span></p>
+        </div>
+        <div class="px-4 row py-2 shadow mt-1 rounded-3" *ngFor="let x of ReadyReview">
+                <div class="reviewHead d-flex mt-3">
+                   
+                    <div class="PersonReview">
+                        <div class="d-flex align-items-center">
+                            <h2 class="mb-0">A review by {{x?.author_details?.name||x?.author_details?.username}} </h2>
+                            <span class="bg-black rounded-3 ms-3 text-white py-1 px-2"><i class="fa-solid fa-star mx-1"></i> {{x.author_details.rating}}.0</span>
+                        </div>
+                        <span *ngIf="ReadyReview!=undefined" class="text-muted">Written by {{x?.author_details?.name||x?.author_details?.username}} on {{mL[+(x.updated_at.slice(0,10).split('-').slice(1,2).join())-1]}} {{x.updated_at.slice(0,10).split('-').slice(2,3).join()}}, {{x.updated_at.slice(0,10).split('-').slice(0,1).join()}}</span>
+                    </div>
+                </div>
+                <div class="mt-3 reviewBody">
+                    <p class="">{{x?.content}} <a [href]="x.url" target="_blank" class="text-black">...read the rest.</a></p>
+                    
+                </div>
+]
+        </div>
+        <div *ngIf="Allreviews!=undefined">
+            <p *ngIf="Allreviews.results.length>0" class="mt-3  cursor" (click)="LOadALL()">Read All Reviews...</p>
+            <p *ngIf="Allreviews.results.length==0" class="mt-3  cursor" (click)="LOadALL()">no review's for this movie...</p>
+           </div>
+    </div>
+</section> 
+
+<section class="mt-4">
+    <div  class="container">
+        <div class="recommendation">
+            <h2>Recommendations</h2>
+            <div>
+                
+                    <p *ngIf="Recommendation?.length==0">We don't have enough data to suggest any movies based on {{ShowName}}. </p>
+                <owl-carousel-o [options]="customOptions1">
+
+                    <ng-template  carouselSlide *ngFor="let x of Recommendation">
+                        <div class="mx-3 poster" >
+                            <div class=" rounded-3 position-relative shadow">
+                                <img   [routerLink]="['/show','details',x?.id]" [src]="'https://www.themoviedb.org/t/p/w250_and_h141_face'+ x?.poster_path" class="cursor rounded-3" alt="">
+                                <circle-progress *ngIf="Recommendation!=undefined" class="cursor" [percent]="x.vote_average*10" [imageWidth]="10" [showSubtitle]="false"
+                                    [radius]="16" [innerStrokeWidth]="2" [titleFontSize]="'12'" [titleColor]="'#fff'"
+                                    [backgroundColor]="'#081c22'" [outerStrokeWidth]="2" [innerStrokeWidth]="0"
+                                    [outerStrokeColor]="x.vote_average*10 >=70 ? '#1da664' : '#d2d531'"
+                                    [innerStrokeColor]="'#C7E596'" [unitsColor]="'#fff'" [animation]="true"
+                                    [animationDuration]="200" class="innerCirclex"></circle-progress>
+
+
+                                <i  class="fa-solid fa-ellipsis cursor" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+
+
+                                <div
+                                    class="position-absolute list list-unstyled bg-white p-1 text-start rounded-3 d-none">
+
+                                    <li class="py-1  px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-list me-1  "></i> Add to List</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-heart me-1  "></i> Favorite</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-bookmark me-1  "></i>Watchlist</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-sharp fa-solid fa-star me-1  "></i>Your Rating</a></li>
+                                </div>
+
+
+                            </div>
+                            <div class="text-center">
+                                <h3  [routerLink]="['/show','details',x?.id]"  class="cursor fw-semibold mt-4">{{x?.original_title||x?.original_name}}</h3>
+                            </div>
+                           
+                        </div>
+
+                    </ng-template>
+
+
+
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section> 

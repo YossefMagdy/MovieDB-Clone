@@ -1,0 +1,70 @@
+<section class=" " >
+    <div class="container trendingMovie pt-4" id="UpcomingMovie">
+        <div class="px-5 ">
+            <div class=" d-flex flex-wrap" >
+                <h2 class="h1 fs-3 text-white">{{'Top Rated'|translate}}</h2>
+               
+                <div class="Chip rounded-pill ms-4">
+                    <p  (click)="TrandingTime($event,'movie')" [ngStyle]="{'color':TrendSelection =='left' ? '#032541':'white'}" tr="Movies" (click)="MovieOrTv='movie'" class="cursor" >{{"Movies"|translate}}</p>
+
+                    <p  [ngStyle]="{'color':TrendSelection =='right' ? '#032541':'white'}" (click)="TrandingTime($event,'tv')" tr="OnTv" (click)="MovieOrTv='tv'" class="cursor">{{"On Tv"|translate}}</p>
+
+                    <div [ngStyle]="{'left': TrendSelection =='left' ?'0px':'99px'}" class='togBtn'></div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <owl-carousel-o [options]="customOptions">
+
+                    <ng-template carouselSlide *ngFor="let x of Tranding">
+                        <div class="mx-3 poster cursor">
+                            <div (mouseover)="changeBG(x.poster_path)" class=" rounded-3 position-relative shadow-lg">
+                                <img loading="lazy" (click)="GetData(x.media_type,x.id)" [src]="imgPath+ x.poster_path" class=" rounded-3" alt="">
+                                <circle-progress [percent]="x.vote_average*10" [imageWidth]="10" [showSubtitle]="false"
+                                    [radius]="14" [innerStrokeWidth]="2" [titleFontSize]="'12'" [titleColor]="'#fff'"
+                                    [backgroundColor]="'#081c22'" [outerStrokeWidth]="2" [innerStrokeWidth]="0"
+                                    [outerStrokeColor]="x.vote_average*10 >=70 ? '#1da664' : '#d2d531'"
+                                    [innerStrokeColor]="'#C7E596'" [unitsColor]="'#fff'" [animation]="true"
+                                    [animationDuration]="30" class="innerCircle"></circle-progress>
+
+
+                                <i (click)="List($event)" class="fa-solid fa-ellipsis cursor" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+
+
+                                <div
+                                    class="position-absolute list list-unstyled bg-white p-1 text-start rounded-3 d-none">
+
+                                    <li class="py-1  px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-list me-1  "></i> {{ 'Add to List'|translate}}</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-heart me-1  "></i> {{'Favorite'|translate}}</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-bookmark me-1  "></i>{{'Watchlist'|translate}}</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-sharp fa-solid fa-star me-1  "></i>{{"Your Rating"|translate}}</a></li>
+                                </div>
+
+
+                            </div>
+                            <div class="mt-4 text-center">
+                                <h2 (click)="GetData(x.media_type,x.id)" [routerLink]="['/Movie','moviedetails',x.id]" class="PosterName  cursor text-white mb-2 fw-semibold">{{x.original_title || x.name}}</h2>
+                                <p class="lh-sm text-white">{{x.release_date||x.first_air_date}}</p>
+                            </div>
+
+                        </div>
+
+                    </ng-template>
+
+
+
+
+                </owl-carousel-o>
+                
+            </div>
+        </div>
+    </div>
+</section>

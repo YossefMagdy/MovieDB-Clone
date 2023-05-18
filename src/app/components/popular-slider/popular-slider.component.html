@@ -1,0 +1,66 @@
+<section class="mt-4 trendingMovie">
+    <div class="container">
+        <div class="px-5">
+            <div class="TrendingHead d-flex flex-wrap">
+                <h2 class="h1 fs-3">{{"What's Popular"|translate}}</h2>
+                <div class="Chip rounded-pill ms-4">
+                    <p  (click)="MovieOrTv='movie'" [ngStyle]="{'background': TrendSelection=='left'? 'linear-gradient(to right, #c0fecf 0%, #1ed5a9 100%)':'','-webkit-text-fill-color': TrendSelection=='left'? 'transparent':'','-webkit-background-clip': TrendSelection=='left'? 'text':''}" (click)="TrandingTime($event)" tr="movie" class="cursor">{{"Movies"|translate}}</p>
+                    <p  (click)="MovieOrTv='tv'" [ngStyle]="{'background': TrendSelection=='right'? 'linear-gradient(to right, #c0fecf 0%, #1ed5a9 100%)':'','-webkit-text-fill-color': TrendSelection=='right'? 'transparent':'','-webkit-background-clip': TrendSelection=='right'? 'text':''}" (click)="TrandingTime($event)"tr="tv" class="cursor">{{"On Tv"|translate}}</p>
+                    <div [ngStyle]="{'left': TrendSelection =='left' ?'0px':'99px'}" class='togBtn'></div>
+                </div>
+            </div>
+            <div class="mt-3 ">
+                <owl-carousel-o [options]="customOptions">
+
+                    <ng-template  carouselSlide *ngFor="let x of Tranding">
+                        <div class="mx-3 poster cursor">
+                            <div class=" rounded-3 position-relative ">
+                                <img loading="lazy" (click)="GetData(x.media_type,x.id)"   [src]="imgPath+ x.poster_path" class=" rounded-3" alt="">
+                                <circle-progress [percent]="x.vote_average*10" [imageWidth]="10" [showSubtitle]="false"
+                                    [radius]="14" [innerStrokeWidth]="2" [titleFontSize]="'12'" [titleColor]="'#fff'"
+                                    [backgroundColor]="'#081c22'" [outerStrokeWidth]="2" [innerStrokeWidth]="0"
+                                    [outerStrokeColor]="x.vote_average*10 >=70 ? '#1da664' : '#d2d531'"
+                                    [innerStrokeColor]="'#C7E596'" [unitsColor]="'#fff'" [animation]="true"
+                                    [animationDuration]="30" class="innerCircle"></circle-progress>
+
+
+                                <i (click)="List($event)" class="fa-solid fa-ellipsis cursor" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+
+
+                                <div
+                                    class="position-absolute list list-unstyled bg-white p-1 text-start rounded-3 d-none">
+
+                                    <li class="py-1  px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-list me-1  "></i> {{ 'Add to List'|translate}}</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-heart me-1  "></i> {{'Favorite'|translate}}</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-solid fa-bookmark me-1  "></i>{{'Watchlist'|translate}}</a></li>
+
+                                    <li class="py-1 px-2"><a class="cursor text-decoration-none "><i
+                                                class="fa-sharp fa-solid fa-star me-1  "></i>{{"Your Rating"|translate}}</a></li>
+                                </div>
+
+
+                            </div>
+                            <div class="mt-4">
+                                <h2 (click)="GetData(x.media_type,x.id)" class="PosterName cursor mb-2 fw-semibold">{{x.original_title || x.name}}</h2>
+                                <p class="text-muted lh-sm">{{x.release_date||x.first_air_date}}</p>
+                            </div>
+
+                        </div>
+
+                    </ng-template>
+
+
+
+
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>

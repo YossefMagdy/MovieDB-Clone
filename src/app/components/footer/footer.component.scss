@@ -1,0 +1,29 @@
+footer{
+    background-color: var(--maincolor);
+}
+.Name{
+    width: fit-content;
+    font-size: 1.2em;
+    color: #01b4e4;
+}
+.Content div img{
+    display: block;
+    margin-left: auto;
+}
+.Content div p{
+    display: block;
+    margin-left: auto;
+}
+@media (max-width:992px){
+    .Content div{
+        width: 100%;
+    }
+    .Content div img{
+        display: block;
+        margin: auto;
+    }
+    .Content div p{
+        display: block;
+        margin: auto;
+    }
+}

@@ -1,0 +1,15 @@
+.Headering{
+    // background-image:  linear-gradient(rgba(0, 0, 0, 0.225),rgba(0, 0, 0, 0.373),rgba(0, 0, 0, 0.433)),url('../../../assets/hPea3Qy5Gd6z4kJLUruBbwAH8Rm.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn{
+    height: 100%;
+    width: 100px;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+.inputColor:focus{
+    box-shadow: none !important;
+}

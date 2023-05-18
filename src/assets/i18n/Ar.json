@@ -1,0 +1,92 @@
+{
+    "Welcome":" مرحبا.",
+    "Millions of movies, TV shows and people to discover. Explore now.":"ملايين الأفلام والمسلسلات والأشخاص جاهزين للاستكشاف. استكشف الآن.",
+    "Trending":"رائج",
+    "What's Popular":"ما هو الشائع",
+    "Top Rated":"الأعلى تقييماً",
+    "Today":"اليوم",
+    "This week":"هذا الاسبوع",
+    "Search for a Movie,tv show,Person....":"ابحث عن فلم، مسلسل، شخص ......",
+    "Add to List":"إضافة إلى القائمة",
+    "Favorite":"مفضل",
+    "Watchlist":"قائمة المشاهدة",
+    "Your Rating":"تقييماتك",
+    "Streaming":"يعرض الان",
+    "On Tv":"على الشاشة", 
+    "Movies":"أفلام", 
+    "TV shows":"مسلسلات", 
+    "People":"أشخاص ", 
+    "Popular":"شائع ", 
+    "Now Playing":"يعرض حالياً ", 
+    "Upcoming":"أفلام قادمة", 
+    "Airing Today":" تعرض اليوم",
+    "Popular People":"أشخاص شائعون",
+    "Popular Movies":" أفلام شائعة",
+    "Now Playing Movies":" أفلام تعرض حالياً",
+    "Upcoming Movies":" أفلام قادمة",
+    "Top Rated Movies":" الأفلام الأعلى تقييماً ",
+
+    
+    
+
+
+    "THE BASICS":"الأساسيات",
+    "About TMDB":"TMDB عن",
+    "Contact Us":"اتصل بنا",
+    "Support Forums":"منتديات الدعم",
+    "System Status":"حالة الخدمة",
+
+    "GET INVOLVED":" ابدأ المساهمة",
+    "Contribution Bible":"دليل المساهمة",
+    "Add New Movie":"إضافة فلم جديد",
+    "Add New TV Show":"إضافة مسلسل جديد",
+
+    "COMMUNITY":"المجتمع",
+    "Guidelines":"إرشادات",
+    "Discussions":"المحادثات",
+    "Leaderboard":"قائمة المتصدرين",
+
+    "LEGAL":"القوانين",
+    "Terms of Use":"شروط الأستخدام",
+    "API Terms of Use":"API شروط استخدام",
+    "Privacy Policy":"سياسة الخصوصية", 
+
+    "View Profile":"عرض الملف الشخصي",
+    "Lists":"القوائم",
+    "Rating":"التقيمات",
+    "Logout":"تسجيل الخروج",
+
+    "Unread Notifications":"تنبيهات غير مقروءة"    ,
+    "Good job! Looks like you're all caught up":"عمل رائع! يبدوا انك شاهدت كل شي. عرض الكل"   ,
+    "View All":"عرض الكل" ,
+    
+
+
+    
+    "Login to your account":"سجل الدخول لحسابك",
+    "In order to use the editing and rating capabilities of TMDB":"من أجل استخدام إمكانيات التحرير و التقييم الخاصة بـ TMDB",
+    "as well as get personal recommendations you will need to login to your account":"بالإضافة إلى الحصول على توصيات شخصية ، ستحتاج إلى تسجيل الدخول إلى حسابك",
+    "If you do not have an account,":" إذا لم يكن لديك حساب ،",
+    "registering for an account is free and simple.":"  فإن التسجيل للحصول على حساب مجاني وبسيط.",
+    "Click here":"انقر هنا.",
+    "to get started.":"لاعادة ارسال بريد التفعيل.",
+
+
+    "Email":"البريد الأكتروني",
+    "Password":"كلمه المرور",
+    "Login":"تسجيل الدخول ",
+    "Reset password":"اعادة تعيين كلمة المرور",
+
+    "REGISTER":"أنضم لـ TMDB",
+
+
+
+    "Sign up for an account": "سجّل للحصول على حساب",
+    "Signing up for an account is free and easy. Fill out the form below to get started. JavaScript is required to to continue.":"التسجيل للحصول على حساب مجاني و سهل. قم بتعبئة النموذج ادناه للبدء. الجافا سكريبت مطلوبة للمتابعة.",
+    "Username":"إسم المستخدم",
+    "Password Confirm":"تأكيد كلمه المرور",
+    "By clicking the 'Sign up' button below, I certify that I have read and agree to the TMDB terms of use and privacy policy.":"بالنقر فوق الزر 'تسجيل' أدناه ، أقر بأنني قد قرأت وأوافق على شروط الاستخدام وسياسة الخصوصية الخاصة بـ TMDB.",
+    "Sign Up":"التسجيل",
+    "Cancel":"الغاء",
+    "Show Password":"عرض كلمه السر"
+}

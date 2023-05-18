@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --maincolor:#032541;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.cursor{
+    cursor: pointer;
+}
+
+.owl-next ,.owl-prev{
+    background-color: transparent !important;
+}
+.owl-next i, .owl-prev i{
+    position: absolute !important;
+    color: #eae9ee;
+    font-size: 4rem;
+}
+.owl-prev i{
+    top: 27%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.owl-next i{
+    top: 27%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+::-webkit-scrollbar
+{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+::-webkit-scrollbar-thumb{
+    background-color:#c1c1c1  ;
+    border-radius: 50px;
+    
+}

@@ -1,0 +1,73 @@
+<Section>
+    <div class="container my-5">
+        <div class="Register-page">
+            <h1 class="fw-semibold">{{"Sign up for an account"|translate}}</h1>
+<p>{{"Signing up for an account is free and easy. Fill out the form below to get started. JavaScript is required to to continue."|translate}}
+    </p>
+            <form  [formGroup]="RegisterForm" (ngSubmit)="handleRegister()">
+                <div *ngIf="Error.length>0" class="mt-2 alert alert-danger mt-2">
+            <p>{{Error}}</p>
+        </div>
+                <div class="username mt-4">
+                    <label for="Username">{{"Username"|translate}}</label>
+                    <input formControlName="name" type="text" id="Username" class="form-control">
+                    <div class="alert alert-danger"
+                        *ngIf="RegisterForm.get('name')?.errors && RegisterForm.get('name')?.touched">
+                        <p *ngIf="RegisterForm.get('name')?.getError('minlength')">Name MinLength is 3</p>
+                        <p *ngIf="RegisterForm.get('name')?.getError('required')">Name Required</p>
+                    </div>
+                </div>
+                <div class="Password mt-3">
+                    <label for="Password">{{"Password"|translate}}</label>
+                    <div class="position-relative">
+                        <input formControlName="password" [type]="Showpass ? 'text' : 'password'" id="Password" class="form-control">
+                        <i (click)="toggleShow()" *ngIf="!Showpass" class="fa-solid fa-eye-slash  eye-slash cursor"></i>
+                        <i (click)="toggleShow()" *ngIf="Showpass" class="fa-solid fa-eye eye-slash cursor"></i>
+                        <div *ngIf="RegisterForm.get('password')?.errors && RegisterForm.get('password')?.touched"
+                        class="alert alert-danger">
+                        <p *ngIf="RegisterForm.get('password')?.getError('pattern')" class="m-0">Use 8 or more characters with a mix of letters, numbers & symbols
+
+                        </p>
+                        <p *ngIf="RegisterForm.get('password')?.getError('required')" class="m-0">password Required</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="PasswordConfirm mt-3">
+                    <label for="PasswordConfirm"    >{{"Password Confirm"|translate}}</label>
+                    <div class="position-relative">
+                        <input formControlName="rePassword" [type]="ShowRepass ?'text': 'password'" id="ConfirmPassword" class="form-control">
+                        <i (click)="toggleShowRe()" *ngIf="!ShowRepass" class="fa-solid fa-eye-slash  eye-slash cursor"></i>
+                        <i (click)="toggleShowRe()" *ngIf="ShowRepass" class="fa-solid fa-eye eye-slash cursor"></i>
+                        <div *ngIf="RegisterForm.get('rePassword')?.errors && RegisterForm.get('rePassword')?.touched"
+                        class="alert alert-danger">
+                        <p *ngIf="RegisterForm.get('rePassword')?.getError('pattern')" class="m-0">rePassword in-valid
+                        </p>
+                        <p *ngIf="RegisterForm.get('rePassword')?.getError('passwordMatch')" class="m-0">Passoword Not
+                            match</p>
+                        <p *ngIf="RegisterForm.get('rePassword')?.getError('required')" class="m-0">rePassword Required
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="email mt-3">
+                    <label for="email">{{"Email"|translate}}</label>
+                    <input formControlName="email" type="email" id="email" class="form-control">
+                    <div class="alert alert-danger"
+                        *ngIf="RegisterForm.get('email')?.errors && RegisterForm.get('email')?.touched">
+                        <p *ngIf="RegisterForm.get('email')?.getError('email')" class="m-0">Email in-valid</p>
+                        <p *ngIf="RegisterForm.get('email')?.getError('required')" class="m-0">Email Required</p>
+                    </div>
+                </div>
+               <div>
+                <p class="mt-3">{{"By clicking the 'Sign up' button below, I certify that I have read and agree to the TMDB terms of use and privacy policy."|translate}}
+                </p>
+               </div>
+                <div class="button d-flex align-items-center py-3">
+                    
+                    <button type="submit"  class="btn btn-primary"><i *ngIf="login" class="fa-solid fa-spinner fa-spin-pulse"></i><span *ngIf="!login">{{"Sign Up"|translate}}</span></button>
+                    <a class="text-decoration-none ms-4 cursor">{{"Cancel"|translate}}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</Section>

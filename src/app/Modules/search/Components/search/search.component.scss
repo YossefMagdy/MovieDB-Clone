@@ -1,0 +1,62 @@
+.body{
+    ul {
+        li:hover{
+            background-color: #ebebeb;
+        }
+        li:hover p{
+            background-color: white;
+        }
+        p{
+            background-color: #ebebeb;
+        }
+        
+
+    }
+}
+.RowH{
+    height: 141px;
+}
+
+.col-h p{
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.search{
+    input{
+        
+        padding: 8px 9em;
+        z-index: -1 !important;
+    }
+    input:focus{
+        border-color: #ccc;
+        box-shadow: none;
+        outline: none;
+    }
+    i{
+        position: absolute;
+           top:50%;
+           transform: translateY(-50% );
+           left: 115px;
+           
+    }
+}
+
+.body2{
+    
+        li:hover{
+            
+        }
+        li:hover p{
+            
+        }
+        p{
+            border: 1px solid #ccc ;
+        }
+        
+
+       
+}

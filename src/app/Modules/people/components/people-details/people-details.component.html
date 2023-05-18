@@ -1,0 +1,53 @@
+<section>
+    <div class="container py-5">
+        <div class="row">
+            <div *ngIf="Data!=undefined" class="col-md-3 mb-md-0 mb-3 ">
+                <div class="image">
+                    <img loading="lazy" [src]="imgpath+Data?.profile_path" class="w-100 rounded-3" alt="">
+                </div>
+            </div>
+            <div *ngIf="Data!=undefined" class="col-md-9">
+                <div class="person-details">
+                    <h2 class="fw-semibold fs-2">{{Data.name}}</h2>
+                    <h3 *ngIf="Data.biography.length>0" class="fs-4 ">Biography</h3>
+                    <p *ngIf="Data.biography.length>0" class="lh-lg">{{Biography}} <span *ngIf="Biography!=Data.biography" (click)="Biography=Data.biography" class="text-primary d-inline-block">...Read More <i class="fa-solid fa-circle-arrow-right cursor"></i></span></p>
+                </div>
+                <div *ngIf="personmovie!=undefined" class="knownFor">
+                    <h3 class="fw-semibold fs-5 mt-4">Known For</h3>
+                    <div>
+                    
+                        <owl-carousel-o [options]="customOptions">
+                            <ng-container *ngFor="let x of personmovie.cast">
+                            <ng-template  carouselSlide *ngIf="x.poster_path!=null">
+                                <div  class="mx-3 cursor poster-cast ">
+                                    <div [routerLink]="['/show','moviedetails',x.id]" class=" rounded-3 position-relative ">
+                                        <img loading="lazy"  [src]="MoVieImgPath+ x.poster_path" class=" rounded-3" alt="">
+                                        <circle-progress [percent]="x.vote_average*10" [imageWidth]="10" [showSubtitle]="false"
+                                            [radius]="14" [innerStrokeWidth]="2" [titleFontSize]="'12'" [titleColor]="'#fff'"
+                                            [backgroundColor]="'#081c22'" [outerStrokeWidth]="2" [innerStrokeWidth]="0"
+                                            [outerStrokeColor]="x.vote_average*10 >=70 ? '#1da664' : '#d2d531'"
+                                            [innerStrokeColor]="'#C7E596'" [unitsColor]="'#fff'" [animation]="true"
+                                            [animationDuration]="30" class="innerCircle"></circle-progress>    
+        
+        
+                                    </div>
+                                    <div class="mt-4 ">
+                                        <p [routerLink]="['/show','moviedetails',x.id]" class="PosterName cursor mb-2 ">{{x.original_title}}</p>
+                                        
+                                    </div>
+        
+                                </div>
+        
+                            </ng-template>
+                        </ng-container>
+
+        
+        
+        
+                        </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,96 @@
+.innerCircle {
+    position: absolute;
+    bottom: 0%;
+    left: 10px;
+    transform: translateY(50%);
+}
+
+.trendingMovie {
+    background-repeat: no-repeat;
+    background-position: 50% 75%;
+    background-size: 100% 100%;
+}
+
+.PosterName {
+    font-size: 1.3em !important;
+    line-height: 1.8;
+    transition: 0.2s all;
+}
+
+.PosterName:hover {
+    color: #01b4e4;
+}
+
+.fa-ellipsis {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    background-color: #a5aaaabc;
+}
+
+.list {
+    top: 35px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 95%;
+
+    li:not(:last-of-type) {
+        border-bottom: 1px solid #e2eded;
+    }
+
+    li a {
+        font-size: 0.9em;
+        color: black;
+    }
+
+    li:hover {
+        background-color: var(--maincolor);
+
+    }
+
+    li:hover a {
+        color: white;
+    }
+
+}
+
+.Chip {
+    position: relative;
+    border: 1px solid;
+    border-color: #a8ff78;
+    display: flex;
+    align-items: center !important;
+    justify-content: space-around;
+    width: 200px;
+    height: 35px;
+
+    p {
+        margin: 0;
+        color: var(--maincolor);
+        font-weight: 500;
+        position: relative;
+        z-index: 5;
+
+    }
+
+    .togBtn {
+        position: absolute;
+        width: 100px;
+        height: 35px;
+        background: #a8ff78;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+        
+
+        z-index: 3;
+        border-radius: 17.5px;
+        transition: 0.3s all;
+    }
+}

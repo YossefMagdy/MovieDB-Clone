@@ -1,0 +1,38 @@
+<section>
+    <div class="container pb-5">
+       
+            <div   class="row gy-4 justify-content-center">
+                <div>
+                    <h2 class="my-4 fw-semibold">{{'Popular People'|translate}}</h2>
+                </div>
+  
+                <div  class="col-xxl-auto  col-md-auto col-sm-auto text-center" *ngFor="let x of Data?.results|paginate:{ itemsPerPage: Data?.results?.length, currentPage:  p ,totalItems: Data?.total_results }
+                ">  
+              <div class="" *ngIf="x?.profile_path!=null">
+                <div [routerLink]="['/people','personDetail',x?.id]" class="poster cursor position-relative  d-inline-block shadow rounded-bottom-2">
+                    <div class=" rounded-top-2 d-inline-block shadow-lg">
+                        <img loading="lazy" [src]="IMagePath+ x?.profile_path
+                        " class=" rounded-top-2 " alt="">
+                    </div>
+                    <div class="mt-2 px-3 meta">
+                        <h4 class="PosterName mt-0 mb-0 cursor fw-semibold">
+                            {{x?.name}}</h4>
+                        
+                        <p class="d-inline-block text-muted"  *ngFor="let y of x?.known_for;let i=index">{{y?.title||y?.name}}
+                            <span class="" *ngIf="i+1!=x.known_for?.length"> ,</span>
+                           
+                        </p>
+                            
+                    </div>
+                   
+                
+            </div>
+              </div>
+              </div>
+            <div class="text-center">
+                <pagination-controls  (click)="paginateon()"   (pageChange)="p = $event "  ></pagination-controls>
+            </div>
+        </div>
+        </div>
+   
+</section>

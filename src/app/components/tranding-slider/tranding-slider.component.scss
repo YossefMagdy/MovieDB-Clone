@@ -1,0 +1,78 @@
+.innerCircle{   
+    position: absolute;
+    bottom:0%;
+    left: 10px;
+    transform: translateY(50%);
+}
+.trendingMovie{
+    background-image: url('../../../assets/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg');
+    background-repeat: no-repeat;
+    background-position:50% 75%;
+}
+.PosterName{
+    font-size: 1em !important;
+    line-height: 1.8;
+    transition: 0.2s all;
+}
+.PosterName:hover{
+    color:#01b4e4;
+}
+.fa-ellipsis{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    background-color: #a5aaaabc;
+}
+
+.list{
+    top: 35px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 95%;
+    li:not(:last-of-type){
+        border-bottom: 1px solid #e2eded;
+    }
+    li a{
+        font-size: 0.9em;
+        color:black;
+    }
+    li:hover{
+        background-color: var(--maincolor);
+        
+    }
+    li:hover a{
+        color: white;
+    }
+    
+}
+
+.Chip{
+    position: relative;
+    border: 1px solid var(--maincolor);
+    display: flex;
+    align-items: center !important;
+    justify-content: space-around;
+    width: 200px;
+    height: 35px;
+    p{
+        margin: 0;
+        color: var(--maincolor);
+        font-weight: 500;
+       
+    }
+    .togBtn{
+        position: absolute;
+        width: 100px;
+        height: 35px;
+        background-color: var(--maincolor);
+        z-index: -1;
+        border-radius: 17.5px;
+        transition: 1s all;
+    }
+}

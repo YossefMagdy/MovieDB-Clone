@@ -1,0 +1,90 @@
+.list i{
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--maincolor);
+    border-radius: 50% ;
+}
+.OvervText{
+    font-size: 1.1em;
+}
+#GameDetails{
+    background-size: cover;
+}
+.postercontect{
+    h3{
+        font-size: 1em;
+    }
+    p{
+        font-size: 0.9em;
+    }
+}
+.owl-stage-outer {
+    height: auto !important;
+}
+.PosterName {
+    font-size: 1.3em !important;
+    line-height: 1.8;
+    transition: 0.2s all;
+}
+
+.PosterName:hover {
+    color: #01b4e4;
+}
+.fa-ellipsis {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    background-color: #a5aaaabc;
+}
+.innerCirclex {
+    position: absolute;
+    bottom: 0%;
+    left: 10px;
+    transform: translateY(50%);
+    cursor: pointer;
+}
+.poster-cast {
+    width: 154px;
+}
+
+.postercontect-cast {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  
+
+    h4 {
+        width:  100%;
+        font-size: 1em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    p {
+        font-size: 0.9em;
+        width:  100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+.WatchON{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--maincolor);
+    left: 0;
+    right: 0;
+    transform: translateY(50%);
+}

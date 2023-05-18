@@ -1,0 +1,124 @@
+.list i {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--maincolor);
+    border-radius: 50%;
+}
+
+.OvervText {
+    font-size: 1.1em;
+}
+
+#GameDetails {
+    background-size: cover;
+}
+
+
+.postercontect-cast {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  
+
+    h4 {
+        width:  100%;
+        font-size: 1em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    p {
+        font-size: 0.9em;
+        width:  100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+.postercontect {
+    max-width: 100%;
+    h4 {
+        font-size: 1em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+}
+.owl-stage-outer {
+    height: auto !important;
+}
+
+.PosterName {
+    font-size: 1.3em !important;
+    line-height: 1.8;
+    transition: 0.2s all;
+}
+
+.PosterName:hover {
+    color: #01b4e4;
+}
+
+.fa-ellipsis {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    background-color: #a5aaaabc;
+}
+.list1{
+    top: 35px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 95%;
+    li:not(:last-of-type){
+        border-bottom: 1px solid #e2eded;
+    }
+    li a{
+        font-size: 0.9em;
+        color:black;
+    }
+    li:hover{
+        background-color: var(--maincolor);
+        
+    }
+    li:hover a{
+        color: white;
+    }
+    
+}
+.innerCirclex {
+    position: absolute;
+    bottom: 0%;
+    left: 10px;
+    transform: translateY(50%);
+    cursor: pointer;
+}
+
+.poster-cast {
+    width: 154px;
+}
+
+.poster-recommendation{
+    width: 250px;
+}
+
+.WatchON{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--maincolor);
+    left: 0;
+    right: 0;
+    transform: translateY(50%);
+}
