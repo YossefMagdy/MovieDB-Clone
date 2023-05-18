@@ -301,7 +301,7 @@
 
   <div *ngIf="searchTerm.length>0" class="SearchTrending">
    
-    <p    [routerLink]="['/show','moviedetails',x.id]"   *ngFor="let x of searchData.slice(0,10)" class="py-1"><i class="fa-solid fa-magnifying-glass me-2 " ></i>{{x?.original_title||x?.original_name}}</p>
+    <p    [routerLink]="['/show','moviedetails',x?.id]"   *ngFor="let x of searchData?.slice(0,10)" class="py-1"><i class="fa-solid fa-magnifying-glass me-2 " ></i>{{x?.original_title||x?.original_name}}</p>
     
   </div>
 </div>
