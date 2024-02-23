@@ -12,8 +12,7 @@ export class MovieService {
   constructor( private _HttpClient:HttpClient) { }
 
   GetIMage():Observable<any>{
-    return this._HttpClient.get(`https://api.themoviedb.org/3/movie/550/images?api_key=f00358d51b413f99420b153f15514668&language=en-US&include_image_language=en,null
-    `)
+    return this._HttpClient.get<any>(`https://api.themoviedb.org/3/movie/550/images?api_key=f00358d51b413f99420b153f15514668&language=en-US&include_image_language=en`)
   }
   TrandingMovie(Time:string='day'):Observable<any>{
     return this._HttpClient.get(`https://api.themoviedb.org/3/trending/all/${Time}?api_key=f00358d51b413f99420b153f15514668`)
